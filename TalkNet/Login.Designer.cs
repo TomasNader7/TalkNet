@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.BoxTalkNet = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,8 +38,8 @@
             this.linkRegister = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.BoxTalkNet.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             this.BoxTalkNet.BackColor = System.Drawing.Color.DarkOrchid;
             this.BoxTalkNet.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BoxTalkNet.BackgroundImage")));
+            this.BoxTalkNet.Controls.Add(this.linkLabel1);
             this.BoxTalkNet.Controls.Add(this.label5);
             this.BoxTalkNet.Controls.Add(this.label4);
             this.BoxTalkNet.Controls.Add(this.label3);
@@ -55,8 +57,8 @@
             this.BoxTalkNet.Controls.Add(this.linkRegister);
             this.BoxTalkNet.Controls.Add(this.label1);
             this.BoxTalkNet.Controls.Add(this.btnLogin);
-            this.BoxTalkNet.Controls.Add(this.textBoxPassword);
-            this.BoxTalkNet.Controls.Add(this.textBoxUsername);
+            this.BoxTalkNet.Controls.Add(this.txtPass);
+            this.BoxTalkNet.Controls.Add(this.txtUser);
             this.BoxTalkNet.Controls.Add(this.labelPassword);
             this.BoxTalkNet.Controls.Add(this.labelUsername);
             this.BoxTalkNet.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,6 +69,20 @@
             this.BoxTalkNet.TabIndex = 0;
             this.BoxTalkNet.TabStop = false;
             this.BoxTalkNet.Text = "Login";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(41, 176);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(104, 15);
+            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Forgot password?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgotPassword_Click);
             // 
             // label5
             // 
@@ -123,7 +139,7 @@
             this.linkRegister.BackColor = System.Drawing.Color.MidnightBlue;
             this.linkRegister.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkRegister.LinkColor = System.Drawing.Color.White;
-            this.linkRegister.Location = new System.Drawing.Point(38, 251);
+            this.linkRegister.Location = new System.Drawing.Point(38, 268);
             this.linkRegister.Name = "linkRegister";
             this.linkRegister.Size = new System.Drawing.Size(54, 15);
             this.linkRegister.TabIndex = 6;
@@ -137,7 +153,7 @@
             this.label1.BackColor = System.Drawing.Color.MidnightBlue;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(38, 226);
+            this.label1.Location = new System.Drawing.Point(38, 245);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 5;
@@ -146,7 +162,7 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Green;
-            this.btnLogin.Location = new System.Drawing.Point(91, 180);
+            this.btnLogin.Location = new System.Drawing.Point(91, 200);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 30);
             this.btnLogin.TabIndex = 4;
@@ -154,20 +170,20 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // textBoxPassword
+            // txtPass
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(41, 138);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(209, 25);
-            this.textBoxPassword.TabIndex = 3;
+            this.txtPass.Location = new System.Drawing.Point(41, 138);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(209, 25);
+            this.txtPass.TabIndex = 3;
             // 
-            // textBoxUsername
+            // txtUser
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(41, 72);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(209, 25);
-            this.textBoxUsername.TabIndex = 2;
+            this.txtUser.Location = new System.Drawing.Point(41, 72);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(209, 25);
+            this.txtUser.TabIndex = 2;
             // 
             // labelPassword
             // 
@@ -211,8 +227,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox BoxTalkNet;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Button btnLogin;
@@ -222,5 +238,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

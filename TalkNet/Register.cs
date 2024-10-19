@@ -13,6 +13,9 @@ namespace TalkNet
 {
     public partial class Register : Form
     {
+        // Mock user data store
+        private static Dictionary<string, string> users = new Dictionary<string, string>();
+
         public Register()
         {
             InitializeComponent();
@@ -41,7 +44,14 @@ namespace TalkNet
                 return;
             }
 
-            // Logic to save user details will go here (SQL integration in future)
+            if (users.ContainsKey(username))
+            {
+                MessageBox.Show("Username already exists.");
+                return;
+            }
+
+            // Save user details to mock data store
+            users.Add(username, password);
             MessageBox.Show("User registered successfully");
         }
 

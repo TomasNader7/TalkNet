@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,22 +21,18 @@ namespace TalkNet
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
-            // testing
-            //SQL logic here
-            //package already installed
-            if(username == "admin" && password == "password")
+            SqlConnection con = new SqlConnection("Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Trust Server Certificate=True");
+            SqlDataAdapter sda = new SqlDataAdapter("select * from forgotPassword where username = '"+txtUser.Text+"' and password = '"+txtPass.Text+"'", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0 )
             {
-                Home home = new Home();
-                home.Show();
-                this.Hide();
+                MessageBox.Show("Login successful!");
             }
             else
             {
-                MessageBox.Show("Invalid username or password. Please try again");
+                MessageBox.Show("Error");
             }
-        
         }
 
         private void linkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -49,5 +46,13 @@ namespace TalkNet
         {
             Application.Exit();
         }
+
+        // Add event for "Forgot Password" Link
+        private void linkForgotPassword_Click(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ForgotPasswordForm forgotPasswordForm = new ForgotPasswordForm();
+            forgotPasswordForm.ShowDialog();
+        }
+
     }
 }
