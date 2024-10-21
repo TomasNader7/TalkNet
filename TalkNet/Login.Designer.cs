@@ -39,9 +39,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPass = new System.Windows.Forms.TextBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.login_showpass = new System.Windows.Forms.CheckBox();
             this.BoxTalkNet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             // 
             this.BoxTalkNet.BackColor = System.Drawing.Color.DarkOrchid;
             this.BoxTalkNet.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BoxTalkNet.BackgroundImage")));
+            this.BoxTalkNet.Controls.Add(this.login_showpass);
             this.BoxTalkNet.Controls.Add(this.linkLabel1);
             this.BoxTalkNet.Controls.Add(this.label5);
             this.BoxTalkNet.Controls.Add(this.label4);
@@ -58,7 +60,7 @@
             this.BoxTalkNet.Controls.Add(this.label1);
             this.BoxTalkNet.Controls.Add(this.btnLogin);
             this.BoxTalkNet.Controls.Add(this.txtPass);
-            this.BoxTalkNet.Controls.Add(this.txtUser);
+            this.BoxTalkNet.Controls.Add(this.txtUsername);
             this.BoxTalkNet.Controls.Add(this.labelPassword);
             this.BoxTalkNet.Controls.Add(this.labelUsername);
             this.BoxTalkNet.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -76,7 +78,7 @@
             this.linkLabel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(41, 176);
+            this.linkLabel1.Location = new System.Drawing.Point(41, 195);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(104, 15);
             this.linkLabel1.TabIndex = 11;
@@ -139,7 +141,7 @@
             this.linkRegister.BackColor = System.Drawing.Color.MidnightBlue;
             this.linkRegister.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkRegister.LinkColor = System.Drawing.Color.White;
-            this.linkRegister.Location = new System.Drawing.Point(38, 268);
+            this.linkRegister.Location = new System.Drawing.Point(38, 280);
             this.linkRegister.Name = "linkRegister";
             this.linkRegister.Size = new System.Drawing.Size(54, 15);
             this.linkRegister.TabIndex = 6;
@@ -153,7 +155,7 @@
             this.label1.BackColor = System.Drawing.Color.MidnightBlue;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(38, 245);
+            this.label1.Location = new System.Drawing.Point(38, 256);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 5;
@@ -162,7 +164,7 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Green;
-            this.btnLogin.Location = new System.Drawing.Point(91, 200);
+            this.btnLogin.Location = new System.Drawing.Point(89, 214);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 30);
             this.btnLogin.TabIndex = 4;
@@ -178,12 +180,12 @@
             this.txtPass.Size = new System.Drawing.Size(209, 25);
             this.txtPass.TabIndex = 3;
             // 
-            // txtUser
+            // txtUsername
             // 
-            this.txtUser.Location = new System.Drawing.Point(41, 72);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(209, 25);
-            this.txtUser.TabIndex = 2;
+            this.txtUsername.Location = new System.Drawing.Point(41, 72);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(209, 25);
+            this.txtUsername.TabIndex = 2;
             // 
             // labelPassword
             // 
@@ -209,6 +211,19 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username";
             // 
+            // login_showpass
+            // 
+            this.login_showpass.AutoSize = true;
+            this.login_showpass.BackColor = System.Drawing.Color.Transparent;
+            this.login_showpass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_showpass.Location = new System.Drawing.Point(142, 169);
+            this.login_showpass.Name = "login_showpass";
+            this.login_showpass.Size = new System.Drawing.Size(108, 19);
+            this.login_showpass.TabIndex = 20;
+            this.login_showpass.Text = "Show Password";
+            this.login_showpass.UseVisualStyleBackColor = false;
+            this.login_showpass.CheckedChanged += new System.EventHandler(this.login_showpass_CheckedChanged);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,7 +243,7 @@
 
         private System.Windows.Forms.GroupBox BoxTalkNet;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Button btnLogin;
@@ -239,5 +254,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox login_showpass;
     }
 }

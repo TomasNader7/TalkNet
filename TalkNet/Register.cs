@@ -1,70 +1,116 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.NetworkInformation;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace TalkNet
 {
     public partial class Register : Form
     {
-        // Mock user data store
-        private static Dictionary<string, string> users = new Dictionary<string, string>();
 
+        SqlConnection connect = new SqlConnection(@"Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
         public Register()
         {
             InitializeComponent();
-            this.FormClosing += RegisterForm_FormClosing;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string username = textBoxEmail.Text;
-            string password = textBoxPassword.Text;
-            string confirmPassword = textBoxConPassword.Text;
-
-            if (password != confirmPassword)
+            if(signup_email.Text == "" ||  signup_username.Text == "" || signup_password.Text == "")
             {
-                MessageBox.Show("Passwords do not match");
-                return;
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (users.ContainsKey(username))
+            else
             {
-                MessageBox.Show("Username already exists.");
-                return;
+                if (connect.State != ConnectionState.Open)
+                {
+                    try
+                    {
+                        connect.Open();
+                        string checkUsername = "SELECT * FROM Users WHERE username = '" + signup_username.Text.Trim() + "' ";
+
+                        using (SqlCommand checkUser = new SqlCommand(checkUsername, connect))
+                        {
+                            SqlDataAdapter adapter = new SqlDataAdapter(checkUser);
+                            DataTable table = new DataTable();
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count >= 1)
+                            {
+                                MessageBox.Show(signup_username.Text + "is already exist", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                string insertData = "INSERT INTO Users (email, username, password, date_created) " +
+                                "VALUES(@email, @username, @pass, @date)";
+
+                                DateTime date = DateTime.Today;
+
+                                using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                                {
+                                    cmd.Parameters.AddWithValue("@email", signup_email.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@username", signup_username.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@pass", signup_password.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@date", date);
+
+                                    cmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Registered successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    // To switch the form
+                                    Login login = new Login();
+                                    login.Show();
+                                    this.Hide();
+                                }
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error connecting Database: " + ex, "Error Nessage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connect.Close();
+                    }
+                }
+           
             }
+        }      
 
-            // Save user details to mock data store
-            users.Add(username, password);
-            MessageBox.Show("User registered successfully");
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void loginLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Login login = new Login();
             login.Show();
             this.Hide();
+
         }
 
-        private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void signup_showpass_CheckedChanged(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (signup_showpass.Checked) 
+            {
+                signup_conpass.PasswordChar = '\0';
+            } else
+            {
+                signup_conpass.PasswordChar= '*'; ;
+            }
+        }
+
+        private void signup_showpass1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (signup_showpass1.Checked)
+            {
+                signup_password.PasswordChar = '\0';
+            }
+            else
+            {
+                signup_password.PasswordChar = '*'; ;
+            }
         }
     }
 }
