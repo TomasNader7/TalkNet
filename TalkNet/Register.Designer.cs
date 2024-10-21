@@ -33,19 +33,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.signup_login = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxConPassword = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
+            this.signup_conpass = new System.Windows.Forms.TextBox();
+            this.signup_username = new System.Windows.Forms.TextBox();
+            this.signup_password = new System.Windows.Forms.TextBox();
+            this.signup_email = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.signup_showpass = new System.Windows.Forms.CheckBox();
+            this.signup_showpass1 = new System.Windows.Forms.CheckBox();
             this.BoxTalkNet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,20 +53,20 @@
             // 
             this.BoxTalkNet.BackColor = System.Drawing.Color.Indigo;
             this.BoxTalkNet.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BoxTalkNet.BackgroundImage")));
+            this.BoxTalkNet.Controls.Add(this.signup_showpass1);
+            this.BoxTalkNet.Controls.Add(this.signup_showpass);
             this.BoxTalkNet.Controls.Add(this.label7);
             this.BoxTalkNet.Controls.Add(this.label6);
             this.BoxTalkNet.Controls.Add(this.label5);
-            this.BoxTalkNet.Controls.Add(this.linkLabel1);
+            this.BoxTalkNet.Controls.Add(this.signup_login);
             this.BoxTalkNet.Controls.Add(this.label4);
             this.BoxTalkNet.Controls.Add(this.label2);
             this.BoxTalkNet.Controls.Add(this.btnRegister);
             this.BoxTalkNet.Controls.Add(this.label3);
-            this.BoxTalkNet.Controls.Add(this.label1);
-            this.BoxTalkNet.Controls.Add(this.textBoxConPassword);
-            this.BoxTalkNet.Controls.Add(this.textBoxEmail);
-            this.BoxTalkNet.Controls.Add(this.textBoxLastName);
-            this.BoxTalkNet.Controls.Add(this.textBoxPassword);
-            this.BoxTalkNet.Controls.Add(this.textBoxFirstName);
+            this.BoxTalkNet.Controls.Add(this.signup_conpass);
+            this.BoxTalkNet.Controls.Add(this.signup_username);
+            this.BoxTalkNet.Controls.Add(this.signup_password);
+            this.BoxTalkNet.Controls.Add(this.signup_email);
             this.BoxTalkNet.Controls.Add(this.labelPassword);
             this.BoxTalkNet.Controls.Add(this.labelUsername);
             this.BoxTalkNet.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,26 +113,26 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Welcome To TalkNet";
             // 
-            // linkLabel1
+            // signup_login
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Image = ((System.Drawing.Image)(resources.GetObject("linkLabel1.Image")));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Green;
-            this.linkLabel1.Location = new System.Drawing.Point(137, 252);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(37, 13);
-            this.linkLabel1.TabIndex = 15;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Login";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.signup_login.AutoSize = true;
+            this.signup_login.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signup_login.Image = ((System.Drawing.Image)(resources.GetObject("signup_login.Image")));
+            this.signup_login.LinkColor = System.Drawing.Color.Green;
+            this.signup_login.Location = new System.Drawing.Point(136, 266);
+            this.signup_login.Name = "signup_login";
+            this.signup_login.Size = new System.Drawing.Size(37, 13);
+            this.signup_login.TabIndex = 15;
+            this.signup_login.TabStop = true;
+            this.signup_login.Text = "Login";
+            this.signup_login.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.loginLabel_LinkClicked);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
-            this.label4.Location = new System.Drawing.Point(28, 253);
+            this.label4.Location = new System.Drawing.Point(27, 267);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 12);
             this.label4.TabIndex = 14;
@@ -142,16 +142,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
-            this.label2.Location = new System.Drawing.Point(27, 172);
+            this.label2.Location = new System.Drawing.Point(27, 160);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Confirm Password";
+            this.label2.Text = "Confirm Password:";
             // 
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.Navy;
-            this.btnRegister.Location = new System.Drawing.Point(74, 215);
+            this.btnRegister.Location = new System.Drawing.Point(29, 233);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(101, 31);
             this.btnRegister.TabIndex = 4;
@@ -163,69 +163,51 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
-            this.label3.Location = new System.Drawing.Point(27, 94);
+            this.label3.Location = new System.Drawing.Point(27, 62);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Email";
+            this.label3.Text = "Username:";
             // 
-            // label1
+            // signup_conpass
             // 
-            this.label1.AutoSize = true;
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(27, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Last Name";
+            this.signup_conpass.Location = new System.Drawing.Point(30, 176);
+            this.signup_conpass.Name = "signup_conpass";
+            this.signup_conpass.PasswordChar = '*';
+            this.signup_conpass.Size = new System.Drawing.Size(236, 22);
+            this.signup_conpass.TabIndex = 9;
             // 
-            // textBoxConPassword
+            // signup_username
             // 
-            this.textBoxConPassword.Location = new System.Drawing.Point(30, 188);
-            this.textBoxConPassword.Name = "textBoxConPassword";
-            this.textBoxConPassword.PasswordChar = '*';
-            this.textBoxConPassword.Size = new System.Drawing.Size(236, 22);
-            this.textBoxConPassword.TabIndex = 9;
+            this.signup_username.Location = new System.Drawing.Point(30, 78);
+            this.signup_username.Name = "signup_username";
+            this.signup_username.Size = new System.Drawing.Size(236, 22);
+            this.signup_username.TabIndex = 8;
             // 
-            // textBoxEmail
+            // signup_password
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(30, 110);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(236, 22);
-            this.textBoxEmail.TabIndex = 8;
+            this.signup_password.Location = new System.Drawing.Point(30, 125);
+            this.signup_password.Name = "signup_password";
+            this.signup_password.PasswordChar = '*';
+            this.signup_password.Size = new System.Drawing.Size(236, 22);
+            this.signup_password.TabIndex = 3;
             // 
-            // textBoxLastName
+            // signup_email
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(30, 71);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(236, 22);
-            this.textBoxLastName.TabIndex = 7;
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(30, 149);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(236, 22);
-            this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
-            // 
-            // textBoxFirstName
-            // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(30, 32);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(236, 22);
-            this.textBoxFirstName.TabIndex = 2;
+            this.signup_email.Location = new System.Drawing.Point(30, 32);
+            this.signup_email.Name = "signup_email";
+            this.signup_email.Size = new System.Drawing.Size(236, 22);
+            this.signup_email.TabIndex = 2;
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Image = ((System.Drawing.Image)(resources.GetObject("labelPassword.Image")));
-            this.labelPassword.Location = new System.Drawing.Point(27, 133);
+            this.labelPassword.Location = new System.Drawing.Point(27, 109);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(56, 13);
+            this.labelPassword.Size = new System.Drawing.Size(59, 13);
             this.labelPassword.TabIndex = 1;
-            this.labelPassword.Text = "Password";
+            this.labelPassword.Text = "Password:";
             // 
             // labelUsername
             // 
@@ -234,9 +216,33 @@
             this.labelUsername.Image = ((System.Drawing.Image)(resources.GetObject("labelUsername.Image")));
             this.labelUsername.Location = new System.Drawing.Point(27, 16);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(61, 13);
+            this.labelUsername.Size = new System.Drawing.Size(81, 13);
             this.labelUsername.TabIndex = 0;
-            this.labelUsername.Text = "First Name";
+            this.labelUsername.Text = "Email Address:";
+            // 
+            // signup_showpass
+            // 
+            this.signup_showpass.AutoSize = true;
+            this.signup_showpass.BackColor = System.Drawing.Color.Transparent;
+            this.signup_showpass.Location = new System.Drawing.Point(159, 204);
+            this.signup_showpass.Name = "signup_showpass";
+            this.signup_showpass.Size = new System.Drawing.Size(107, 17);
+            this.signup_showpass.TabIndex = 19;
+            this.signup_showpass.Text = "Show Password";
+            this.signup_showpass.UseVisualStyleBackColor = false;
+            this.signup_showpass.CheckedChanged += new System.EventHandler(this.signup_showpass_CheckedChanged);
+            // 
+            // signup_showpass1
+            // 
+            this.signup_showpass1.AutoSize = true;
+            this.signup_showpass1.BackColor = System.Drawing.Color.Transparent;
+            this.signup_showpass1.Location = new System.Drawing.Point(159, 153);
+            this.signup_showpass1.Name = "signup_showpass1";
+            this.signup_showpass1.Size = new System.Drawing.Size(107, 17);
+            this.signup_showpass1.TabIndex = 20;
+            this.signup_showpass1.Text = "Show Password";
+            this.signup_showpass1.UseVisualStyleBackColor = false;
+            this.signup_showpass1.CheckedChanged += new System.EventHandler(this.signup_showpass1_CheckedChanged);
             // 
             // Register
             // 
@@ -257,20 +263,20 @@
 
         private System.Windows.Forms.GroupBox BoxTalkNet;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.TextBox textBoxFirstName;
+        private System.Windows.Forms.TextBox signup_password;
+        private System.Windows.Forms.TextBox signup_email;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxConPassword;
+        private System.Windows.Forms.TextBox signup_username;
+        private System.Windows.Forms.TextBox signup_conpass;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel signup_login;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox signup_showpass;
+        private System.Windows.Forms.CheckBox signup_showpass1;
     }
 }
