@@ -15,7 +15,7 @@ namespace TalkNet
 {
     public partial class ResetPasswordForm : Form
     {
-        string username = ForgotPasswordForm.to;
+        string email = ForgotPasswordForm.to;
 
         public ResetPasswordForm()
         {
@@ -24,14 +24,18 @@ namespace TalkNet
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (txtResetPass.Text == txtResetPassVer.Text)
+            string password = textBox2.Text;
+            if (txtResetPassVer.Text == password)
             {
-                SqlConnection con = new SqlConnection("Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Trust Server Certificate=True");
-                SqlCommand cmd = new SqlCommand("UPDATE [dbo].[forgotPassword] SET [password] = '"+txtResetPassVer.Text+"'  WHERE username = '"+username+"' ", con);
-                con.Open();
+                SqlConnection connection = new SqlConnection(@"Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
+                string q = "UPDATE [dbo].[Users] SET [password] = '" + password + "'  WHERE email = '" + email + "' ";
+                SqlCommand cmd = new SqlCommand(q, connection);
+
+                connection.Open();
                 cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Reses successfully!");
+                connection.Close();
+
+                MessageBox.Show("Password Successfully Changed!");
             }
             else
             {

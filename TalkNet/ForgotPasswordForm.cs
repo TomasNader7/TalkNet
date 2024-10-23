@@ -15,7 +15,8 @@ namespace TalkNet
 {
     public partial class ForgotPasswordForm : Form
     {
-        public static string randomCode;
+        // string RandomCode;
+        public static string randomcode;
         public static string to;
         public static string EmailAddress { get; private set; }
 
@@ -31,19 +32,21 @@ namespace TalkNet
         // When the user clicks Submit on ForgotPasswordForm, send the generated verification code to their email or phone number
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             string from, pass, messageBody;
             Random rand = new Random();
-            randomCode = (rand.Next(999999)).ToString();
+            randomcode = (rand.Next(999999)).ToString();
             MailMessage message = new MailMessage();
             to = (txtEmail.Text).ToString();
             EmailAddress = to;
             from = "ameliawarden96@gmail.com";
             pass = "xtds hiut bgxa unbv";
-            messageBody = "Your reset code is " + randomCode;
+            messageBody = "Your Reset Code is " + randomcode;
             message.To.Add(to);
             message.From = new MailAddress(from);
             message.Body = messageBody;
-            message.Subject = "Password Reseting code";
+            message.Subject = "Password Reset Code";
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
             smtp.EnableSsl = true;
             smtp.Port = 587;
@@ -52,7 +55,7 @@ namespace TalkNet
             try
             {
                 smtp.Send(message);
-                MessageBox.Show("Code sent successfully!");
+                MessageBox.Show("Code Successfully Sent!");
                 VerificationForm verificationForm = new VerificationForm();
                 verificationForm.ShowDialog();
             }
