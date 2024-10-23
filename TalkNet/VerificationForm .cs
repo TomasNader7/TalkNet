@@ -20,9 +20,9 @@ namespace TalkNet
         private void button1_Click(object sender, EventArgs e)
         {
             // Check if the entered code matches the generated code
-            if(ForgotPasswordForm.randomCode == (txtVerCode.Text).ToString())
+            if(ForgotPasswordForm.randomcode == (txtVerCode.Text).ToString())
             {
-                string userEmail = ForgotPasswordForm.EmailAddress;
+                string userEmail = ForgotPasswordForm.to;
                 ResetPasswordForm rp = new ResetPasswordForm();
                 this.Hide();
                 rp.Show();
