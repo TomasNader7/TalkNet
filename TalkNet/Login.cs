@@ -92,8 +92,13 @@ namespace TalkNet
         private void linkForgotPassword_Click(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ForgotPasswordForm forgotPasswordForm = new ForgotPasswordForm();
-            forgotPasswordForm.ShowDialog();
+            forgotPasswordForm.Show();
+            this.Hide();
         }
 
+        private void BoxTalkNet_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

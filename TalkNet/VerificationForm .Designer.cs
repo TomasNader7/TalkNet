@@ -73,6 +73,7 @@
             this.Controls.Add(this.label1);
             this.Name = "VerificationForm";
             this.Text = "VerificationForm";
+            this.Load += new System.EventHandler(this.VerificationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

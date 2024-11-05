@@ -57,7 +57,8 @@ namespace TalkNet
                 smtp.Send(message);
                 MessageBox.Show("Code Successfully Sent!");
                 VerificationForm verificationForm = new VerificationForm();
-                verificationForm.ShowDialog();
+                verificationForm.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {

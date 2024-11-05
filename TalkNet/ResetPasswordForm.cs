@@ -42,5 +42,10 @@ namespace TalkNet
                 MessageBox.Show("New password does not match. Enter same password.");
             }
         }
+
+        private void ResetPasswordForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

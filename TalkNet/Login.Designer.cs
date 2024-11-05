@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.BoxTalkNet = new System.Windows.Forms.GroupBox();
+            this.login_showpass = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.login_showpass = new System.Windows.Forms.CheckBox();
             this.BoxTalkNet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,20 @@
             this.BoxTalkNet.TabIndex = 0;
             this.BoxTalkNet.TabStop = false;
             this.BoxTalkNet.Text = "Login";
+            this.BoxTalkNet.Enter += new System.EventHandler(this.BoxTalkNet_Enter);
+            // 
+            // login_showpass
+            // 
+            this.login_showpass.AutoSize = true;
+            this.login_showpass.BackColor = System.Drawing.Color.Transparent;
+            this.login_showpass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_showpass.Location = new System.Drawing.Point(142, 169);
+            this.login_showpass.Name = "login_showpass";
+            this.login_showpass.Size = new System.Drawing.Size(108, 19);
+            this.login_showpass.TabIndex = 20;
+            this.login_showpass.Text = "Show Password";
+            this.login_showpass.UseVisualStyleBackColor = false;
+            this.login_showpass.CheckedChanged += new System.EventHandler(this.login_showpass_CheckedChanged);
             // 
             // linkLabel1
             // 
@@ -210,19 +224,6 @@
             this.labelUsername.Size = new System.Drawing.Size(67, 17);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username";
-            // 
-            // login_showpass
-            // 
-            this.login_showpass.AutoSize = true;
-            this.login_showpass.BackColor = System.Drawing.Color.Transparent;
-            this.login_showpass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_showpass.Location = new System.Drawing.Point(142, 169);
-            this.login_showpass.Name = "login_showpass";
-            this.login_showpass.Size = new System.Drawing.Size(108, 19);
-            this.login_showpass.TabIndex = 20;
-            this.login_showpass.Text = "Show Password";
-            this.login_showpass.UseVisualStyleBackColor = false;
-            this.login_showpass.CheckedChanged += new System.EventHandler(this.login_showpass_CheckedChanged);
             // 
             // Login
             // 
