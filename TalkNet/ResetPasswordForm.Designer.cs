@@ -103,6 +103,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ResetPasswordForm";
             this.Text = "ResetPasswordForm";
+            this.Load += new System.EventHandler(this.ResetPasswordForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

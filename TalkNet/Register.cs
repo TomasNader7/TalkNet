@@ -4,7 +4,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace TalkNet
 {
@@ -111,6 +110,11 @@ namespace TalkNet
             {
                 signup_password.PasswordChar = '*'; ;
             }
+        }
+
+        private void BoxTalkNet_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

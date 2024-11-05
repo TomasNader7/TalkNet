@@ -33,5 +33,10 @@ namespace TalkNet
             }
 
         }
+
+        private void VerificationForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

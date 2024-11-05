@@ -1,6 +1,6 @@
 ﻿namespace TalkNet
 {
-    partial class Home
+    partial class Setting
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SettingBtn = new System.Windows.Forms.Button();
-            this.homeBtn = new System.Windows.Forms.Button();
-            this.chatlistBox = new System.Windows.Forms.ListView();
+            this.navHome = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -44,11 +46,13 @@
             // groupBox2
             // 
             this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
-            this.groupBox2.Controls.Add(this.chatlistBox);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(202, 26);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(597, 398);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
             // groupBox1
@@ -59,7 +63,7 @@
             this.groupBox1.Location = new System.Drawing.Point(2, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 398);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
             // label1
@@ -77,7 +81,7 @@
             // 
             this.groupBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox3.BackgroundImage")));
             this.groupBox3.Controls.Add(this.SettingBtn);
-            this.groupBox3.Controls.Add(this.homeBtn);
+            this.groupBox3.Controls.Add(this.navHome);
             this.groupBox3.Location = new System.Drawing.Point(0, 170);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 228);
@@ -89,48 +93,74 @@
             this.SettingBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.SettingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SettingBtn.Image = ((System.Drawing.Image)(resources.GetObject("SettingBtn.Image")));
             this.SettingBtn.Location = new System.Drawing.Point(40, 138);
             this.SettingBtn.Name = "SettingBtn";
             this.SettingBtn.Size = new System.Drawing.Size(126, 43);
             this.SettingBtn.TabIndex = 1;
             this.SettingBtn.Text = "🌣    SETTING";
             this.SettingBtn.UseVisualStyleBackColor = false;
-            this.SettingBtn.Click += new System.EventHandler(this.SettingBtn_Click);
             // 
-            // homeBtn
+            // navHome
             // 
-            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
-            this.homeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.homeBtn.Location = new System.Drawing.Point(40, 76);
-            this.homeBtn.Name = "homeBtn";
-            this.homeBtn.Size = new System.Drawing.Size(126, 44);
-            this.homeBtn.TabIndex = 0;
-            this.homeBtn.Text = "🏠︎     HOME";
-            this.homeBtn.UseVisualStyleBackColor = true;
-            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            this.navHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navHome.BackgroundImage")));
+            this.navHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navHome.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.navHome.Location = new System.Drawing.Point(40, 76);
+            this.navHome.Name = "navHome";
+            this.navHome.Size = new System.Drawing.Size(126, 44);
+            this.navHome.TabIndex = 0;
+            this.navHome.Text = "🏠︎     HOME";
+            this.navHome.UseVisualStyleBackColor = true;
+            this.navHome.Click += new System.EventHandler(this.navHome_Click);
             // 
-            // chatlistBox
+            // button1
             // 
-            this.chatlistBox.HideSelection = false;
-            this.chatlistBox.Location = new System.Drawing.Point(69, 43);
-            this.chatlistBox.Name = "chatlistBox";
-            this.chatlistBox.Size = new System.Drawing.Size(479, 247);
-            this.chatlistBox.TabIndex = 2;
-            this.chatlistBox.UseCompatibleStateImageBehavior = false;
-            this.chatlistBox.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(153, 206);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(235, 43);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Change Username";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // Home
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(153, 264);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(235, 43);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Change Password";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button3.Location = new System.Drawing.Point(15, 321);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 44);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Logout";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Home";
-            this.Text = "Home";
-            this.Load += new System.EventHandler(this.Home_Load);
+            this.Name = "Setting";
+            this.Text = "Setting";
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -146,7 +176,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button SettingBtn;
-        private System.Windows.Forms.Button homeBtn;
-        private System.Windows.Forms.ListView chatlistBox;
+        private System.Windows.Forms.Button navHome;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
