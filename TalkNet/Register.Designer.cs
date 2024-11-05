@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.BoxTalkNet = new System.Windows.Forms.GroupBox();
+            this.signup_showpass1 = new System.Windows.Forms.CheckBox();
+            this.signup_showpass = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,8 +46,6 @@
             this.signup_email = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.signup_showpass = new System.Windows.Forms.CheckBox();
-            this.signup_showpass1 = new System.Windows.Forms.CheckBox();
             this.BoxTalkNet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +77,31 @@
             this.BoxTalkNet.TabIndex = 1;
             this.BoxTalkNet.TabStop = false;
             this.BoxTalkNet.Text = "Register";
+            this.BoxTalkNet.Enter += new System.EventHandler(this.BoxTalkNet_Enter);
+            // 
+            // signup_showpass1
+            // 
+            this.signup_showpass1.AutoSize = true;
+            this.signup_showpass1.BackColor = System.Drawing.Color.Transparent;
+            this.signup_showpass1.Location = new System.Drawing.Point(159, 153);
+            this.signup_showpass1.Name = "signup_showpass1";
+            this.signup_showpass1.Size = new System.Drawing.Size(107, 17);
+            this.signup_showpass1.TabIndex = 20;
+            this.signup_showpass1.Text = "Show Password";
+            this.signup_showpass1.UseVisualStyleBackColor = false;
+            this.signup_showpass1.CheckedChanged += new System.EventHandler(this.signup_showpass1_CheckedChanged);
+            // 
+            // signup_showpass
+            // 
+            this.signup_showpass.AutoSize = true;
+            this.signup_showpass.BackColor = System.Drawing.Color.Transparent;
+            this.signup_showpass.Location = new System.Drawing.Point(159, 204);
+            this.signup_showpass.Name = "signup_showpass";
+            this.signup_showpass.Size = new System.Drawing.Size(107, 17);
+            this.signup_showpass.TabIndex = 19;
+            this.signup_showpass.Text = "Show Password";
+            this.signup_showpass.UseVisualStyleBackColor = false;
+            this.signup_showpass.CheckedChanged += new System.EventHandler(this.signup_showpass_CheckedChanged);
             // 
             // label7
             // 
@@ -219,30 +244,6 @@
             this.labelUsername.Size = new System.Drawing.Size(81, 13);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Email Address:";
-            // 
-            // signup_showpass
-            // 
-            this.signup_showpass.AutoSize = true;
-            this.signup_showpass.BackColor = System.Drawing.Color.Transparent;
-            this.signup_showpass.Location = new System.Drawing.Point(159, 204);
-            this.signup_showpass.Name = "signup_showpass";
-            this.signup_showpass.Size = new System.Drawing.Size(107, 17);
-            this.signup_showpass.TabIndex = 19;
-            this.signup_showpass.Text = "Show Password";
-            this.signup_showpass.UseVisualStyleBackColor = false;
-            this.signup_showpass.CheckedChanged += new System.EventHandler(this.signup_showpass_CheckedChanged);
-            // 
-            // signup_showpass1
-            // 
-            this.signup_showpass1.AutoSize = true;
-            this.signup_showpass1.BackColor = System.Drawing.Color.Transparent;
-            this.signup_showpass1.Location = new System.Drawing.Point(159, 153);
-            this.signup_showpass1.Name = "signup_showpass1";
-            this.signup_showpass1.Size = new System.Drawing.Size(107, 17);
-            this.signup_showpass1.TabIndex = 20;
-            this.signup_showpass1.Text = "Show Password";
-            this.signup_showpass1.UseVisualStyleBackColor = false;
-            this.signup_showpass1.CheckedChanged += new System.EventHandler(this.signup_showpass1_CheckedChanged);
             // 
             // Register
             // 
