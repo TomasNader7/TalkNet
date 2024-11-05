@@ -12,13 +12,22 @@ namespace TalkNet
 {
     public partial class IndividualChat : Form
     {
-        private int _chatId;
-        public IndividualChat(int chatId)
+        public IndividualChat()
         {
             InitializeComponent();
-            _chatId = chatId;
         }
-        private void IndividualChat_Load(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void messageTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

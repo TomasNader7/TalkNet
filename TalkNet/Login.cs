@@ -1,104 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Data.SqlClient;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
+using TalkNet;
 
-namespace TalkNet
+private void btnLogin_Click(object sender, EventArgs e)
 {
-    public partial class Login : Form
+    if (txtUsername.Text == "" || txtPass.Text == "")
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
-        public Login()
+        MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+    else
+    {
+        if (connect.State != ConnectionState.Open)
         {
-            InitializeComponent();
-        }
-        private void linkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Register register = new Register();
-            register.Show();
-            this.Hide();
-        }
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-        private void login_showpass_CheckedChanged(object sender, EventArgs e)
-        {
-            if (login_showpass.Checked)
+            try
             {
-                txtPass.PasswordChar = '\0';
-            }
-            else
-            {
-                txtPass.PasswordChar = '*'; ;
-            }
-        }
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if (txtUsername.Text == "" || txtPass.Text == "")
-            {
-                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (connect.State != ConnectionState.Open)
+                connect.Open();
+
+                // Updated SQL query to retrieve UserId along with username and password
+                String selectData = "SELECT UserId FROM Users WHERE username = @username AND password = @pass";
+                using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
-                    try
+                    cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                    cmd.Parameters.AddWithValue("@pass", txtPass.Text);
+
+                    // Execute the command and read the UserId
+                    var result = cmd.ExecuteScalar();
+                    if (result != null) // If a UserId is returned
                     {
-                        connect.Open();
+                        int userId = Convert.ToInt32(result);
+                        MessageBox.Show("Logged In Successfully ", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        String selectData = "SELECT * FROM Users WHERE username = @username AND password = @pass ";
-                        using (SqlCommand cmd = new SqlCommand(selectData, connect))
-                        {
-                            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                            cmd.Parameters.AddWithValue("@pass", txtPass.Text);
-                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            if(table.Rows.Count >= 1)
-                            {
-                                MessageBox.Show("Logged In Successfully ", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                Home home = new Home();
-                                home.Show();
-                                this.Hide();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Incorrect Username/Password ", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            }
-                        }
+                        // Pass the UserId to the Home form
+                        Home home = new Home(userId);
+                        home.Show();
+                        this.Hide();
                     }
-                    catch (Exception ex) 
+                    else
                     {
-                        MessageBox.Show("Error Connecting: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
+                        MessageBox.Show("Incorrect Username/Password ", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-        }
-        // Add event for "Forgot Password" Link
-        private void linkForgotPassword_Click(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ForgotPasswordForm forgotPasswordForm = new ForgotPasswordForm();
-            forgotPasswordForm.Show();
-            this.Hide();
-        }
-
-        private void BoxTalkNet_Enter(object sender, EventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Connecting: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connect.Close();
+            }
         }
     }
 }
