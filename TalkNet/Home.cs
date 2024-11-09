@@ -10,9 +10,11 @@ namespace TalkNet
         // Database connection with the specified connection string
         SqlConnection connect = new SqlConnection(@"Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
 
-        public Home()
+        private int _userId;
+        public Home(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -61,7 +63,7 @@ namespace TalkNet
                 int chatId = Convert.ToInt32(selectedItem.Tag); // Retrieve ChatId stored in Tag
 
                 // Open the IndividualChat form and pass the selected chatId
-                IndividualChat chatForm = new IndividualChat(chatId);
+                IndividualChat chatForm = new IndividualChat(chatId, _userId);
                 chatForm.Show();
                 this.Hide(); // Hide Home form if necessary
             }

@@ -53,18 +53,22 @@ namespace TalkNet
                     {
                         connect.Open();
 
-                        String selectData = "SELECT * FROM Users WHERE username = @username AND password = @pass ";
+                        string selectData = "SELECT * FROM Users WHERE username = @username AND password = @pass";
                         using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
-                            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                            cmd.Parameters.AddWithValue("@pass", txtPass.Text);
+                            cmd.Parameters.AddWithValue("@username", txtUsername.Text.Trim());
+                            cmd.Parameters.AddWithValue("@pass", txtPass.Text.Trim());
+
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                             DataTable table = new DataTable();
                             adapter.Fill(table);
 
-                            if(table.Rows.Count >= 1)
+                            if (table.Rows.Count >= 1)
                             {
-                                MessageBox.Show("Logged In Successfully ", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Set the logged-in username in UserSession
+                                UserSession.CurrentUsername = txtUsername.Text.Trim();
+
+                                MessageBox.Show("Logged In Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 Home home = new Home();
                                 home.Show();
@@ -72,14 +76,13 @@ namespace TalkNet
                             }
                             else
                             {
-                                MessageBox.Show("Incorrect Username/Password ", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                                MessageBox.Show("Incorrect Username/Password", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Error Connecting: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error Connecting: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
