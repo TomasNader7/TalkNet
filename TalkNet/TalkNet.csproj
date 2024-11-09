@@ -69,6 +69,13 @@
     <Compile Include="BackToLogin.Designer.cs">
       <DependentUpon>BackToLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="CircularButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CircularPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="userSession.cs" />
     <Compile Include="ForgotPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
