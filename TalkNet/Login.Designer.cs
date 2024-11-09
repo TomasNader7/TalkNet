@@ -234,6 +234,7 @@
             this.Controls.Add(this.BoxTalkNet);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.BoxTalkNet.ResumeLayout(false);
             this.BoxTalkNet.PerformLayout();
             this.ResumeLayout(false);
