@@ -62,7 +62,7 @@
             this.chatsView.HideSelection = false;
             this.chatsView.Location = new System.Drawing.Point(62, 43);
             this.chatsView.Name = "chatsView";
-            this.chatsView.Columns.Add("Chat Name", 500);
+            this.chatsView.Columns.Add("Chats...", 500);
             this.chatsView.GridLines = true;
             this.chatsView.FullRowSelect = true;
             this.chatsView.Size = new System.Drawing.Size(756, 408);

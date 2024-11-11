@@ -110,31 +110,67 @@ namespace TalkNet
         private int CreateNewChat(int otherUserId)
         {
             int chatId = -1;
+            string otherUsername = string.Empty;
+
             try
             {
                 connect.Open();
 
-                // Insert a new chat record and retrieve the new ChatId
-                string insertChatQuery = "INSERT INTO Chats (ChatName, UserId) OUTPUT INSERTED.ChatId VALUES (@chatName, @currentUserId)";
-                using (SqlCommand cmd = new SqlCommand(insertChatQuery, connect))
+                // Retrieve the username of the other user (the person you are chatting with)
+                string query = "SELECT username FROM Users WHERE Id = @otherUserId";
+                using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
-                    cmd.Parameters.AddWithValue("@chatName", "Chat with User " + otherUserId);
-                    cmd.Parameters.AddWithValue("@currentUserId", UserSession.CurrentUserId);
-                    chatId = (int)cmd.ExecuteScalar(); // Get the new ChatId
+                    cmd.Parameters.AddWithValue("@otherUserId", otherUserId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            otherUsername = reader["username"].ToString();
+                        }
+                    }
                 }
 
-                if (chatId > 0)
+                // Check if we have the other username
+                if (!string.IsNullOrEmpty(otherUsername))
                 {
-                    // Insert records into ChatParticipants for both users
-                    string insertParticipantsQuery = "INSERT INTO ChatParticipants (ChatId, UserId) VALUES (@chatId, @userId)";
-                    using (SqlCommand cmd = new SqlCommand(insertParticipantsQuery, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@chatId", chatId);
-                        cmd.Parameters.AddWithValue("@userId", UserSession.CurrentUserId);
-                        cmd.ExecuteNonQuery(); // Add the current user
+                    // Set the chat name based on who is logged in
+                    string currentUserUsername = UserSession.CurrentUsername;  // Get the current logged-in user's name
+                    string chatName = "Chat with ";
 
-                        cmd.Parameters["@userId"].Value = otherUserId;
-                        cmd.ExecuteNonQuery(); // Add the other user
+                    // Set chat name dynamically
+                    if (UserSession.CurrentUserId == otherUserId)
+                    {
+                        // If the logged-in user is the one being chatted with, set the name to the other user
+                        chatName += otherUsername;  // The other person is being chatted with
+                    }
+                    else
+                    {
+                        chatName += currentUserUsername;  // The logged-in user is chatting with the other person
+                    }
+
+                    // Insert a new chat and retrieve the ChatId
+                    string insertChatQuery = "INSERT INTO Chats (ChatName, UserId) OUTPUT INSERTED.ChatId VALUES (@chatName, @currentUserId)";
+                    using (SqlCommand cmd = new SqlCommand(insertChatQuery, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@chatName", chatName);
+                        cmd.Parameters.AddWithValue("@currentUserId", UserSession.CurrentUserId);
+                        chatId = (int)cmd.ExecuteScalar();  // Retrieve the ChatId of the newly created chat
+                    }
+
+                    if (chatId > 0)
+                    {
+                        // Insert participants (both the logged-in user and the other user)
+                        string insertParticipantsQuery = "INSERT INTO ChatParticipants (ChatId, UserId) VALUES (@chatId, @userId)";
+                        using (SqlCommand cmd = new SqlCommand(insertParticipantsQuery, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@chatId", chatId);
+                            cmd.Parameters.AddWithValue("@userId", UserSession.CurrentUserId);  // Add logged-in user
+                            cmd.ExecuteNonQuery();  // Execute the insert for the logged-in user
+
+                            cmd.Parameters["@userId"].Value = otherUserId;  // Update for the other user
+                            cmd.ExecuteNonQuery();  // Execute the insert for the other user
+                        }
                     }
                 }
             }
@@ -146,7 +182,11 @@ namespace TalkNet
             {
                 connect.Close();
             }
+
             return chatId;
         }
+
+
+
     }
 }
