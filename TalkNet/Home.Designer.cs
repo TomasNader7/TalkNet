@@ -36,6 +36,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.homeBtn = new System.Windows.Forms.Button();
             this.SettingBtn = new System.Windows.Forms.Button();
+            this.newChatbtn = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -44,6 +45,7 @@
             // groupBox2
             // 
             this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
+            this.groupBox2.Controls.Add(this.newChatbtn);
             this.groupBox2.Controls.Add(this.chatsView);
             this.groupBox2.Location = new System.Drawing.Point(303, 40);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -55,13 +57,15 @@
             // 
             // chatsView
             // 
+            this.chatsView.FullRowSelect = true;
+            this.chatsView.GridLines = true;
             this.chatsView.HideSelection = false;
             this.chatsView.Location = new System.Drawing.Point(62, 43);
             this.chatsView.Name = "chatsView";
             this.chatsView.Columns.Add("Chat Name", 500);
             this.chatsView.GridLines = true;
             this.chatsView.FullRowSelect = true;
-            this.chatsView.Size = new System.Drawing.Size(756, 489);
+            this.chatsView.Size = new System.Drawing.Size(756, 408);
             this.chatsView.TabIndex = 0;
             this.chatsView.UseCompatibleStateImageBehavior = false;
             this.chatsView.View = System.Windows.Forms.View.Details;
@@ -134,6 +138,20 @@
             this.SettingBtn.UseVisualStyleBackColor = false;
             this.SettingBtn.Click += new System.EventHandler(this.SettingBtn_Click);
             // 
+            // newChatbtn
+            // 
+            this.newChatbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("newChatbtn.BackgroundImage")));
+            this.newChatbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newChatbtn.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.newChatbtn.Location = new System.Drawing.Point(629, 472);
+            this.newChatbtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newChatbtn.Name = "newChatbtn";
+            this.newChatbtn.Size = new System.Drawing.Size(189, 68);
+            this.newChatbtn.TabIndex = 2;
+            this.newChatbtn.Text = "Start New Chat";
+            this.newChatbtn.UseVisualStyleBackColor = true;
+            this.newChatbtn.Click += new System.EventHandler(this.newChatbtn_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -162,5 +180,6 @@
         private System.Windows.Forms.Button SettingBtn;
         private System.Windows.Forms.Button homeBtn;
         private System.Windows.Forms.ListView chatsView;
+        private System.Windows.Forms.Button newChatbtn;
     }
 }

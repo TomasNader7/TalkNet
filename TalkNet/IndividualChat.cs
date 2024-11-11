@@ -49,22 +49,24 @@ namespace TalkNet
                             DateTime timestamp = (DateTime)reader["Timestamp"];
 
                             // Create a custom bubble panel for each message
-                            Panel bubblePanel = new Panel();
-                            bubblePanel.AutoSize = true;
-                            bubblePanel.Padding = new Padding(10);
-                            bubblePanel.BackColor = username == UserSession.CurrentUsername ? Color.LightBlue : Color.LightGray;
-                            //bubblePanel.Anchor = username == UserSession.CurrentUsername ? AnchorStyles.Right : AnchorStyles.Left;
-                            bubblePanel.Margin = new Padding(5);
+                            Panel bubblePanel = new Panel
+                            {
+                                AutoSize = true,
+                                Padding = new Padding(10),
+                                Margin = new Padding(5),
+                                BackColor = username == UserSession.CurrentUsername ? Color.LightBlue : Color.LightGray
+                            };
 
                             // Add message text and user name
-                            Label messageLabel = new Label();
-                            messageLabel.Text = $" {username} {timestamp}\n{messageText}";
-                            messageLabel.AutoSize = true;
-                            messageLabel.MaximumSize = new Size(500, 0);
+                            Label messageLabel = new Label
+                            {
+                                Text = $"{username} {timestamp:HH:mm}\n{messageText}",
+                                AutoSize = true,
+                                MaximumSize = new Size(500, 0)
+                            };
                             bubblePanel.Controls.Add(messageLabel);
 
-                            // Align bubbles
-                            //bubblePanel.Dock = username == UserSession.CurrentUsername ? DockStyle.Right : DockStyle.Left;
+                            // Add the bubble panel to the chat panel
                             chatPanel.Controls.Add(bubblePanel);
                         }
                     }
@@ -79,9 +81,13 @@ namespace TalkNet
                 connect.Close();
             }
 
-            // Auto-scroll to the latest message
-            chatPanel.ScrollControlIntoView(chatPanel.Controls[chatPanel.Controls.Count - 1]);
+            // Auto-scroll to the latest message if any messages exist
+            if (chatPanel.Controls.Count > 0)
+            {
+                chatPanel.ScrollControlIntoView(chatPanel.Controls[chatPanel.Controls.Count - 1]);
+            }
         }
+
 
 
         private void btnSend_Click_1(object sender, EventArgs e)
