@@ -53,20 +53,20 @@ namespace TalkNet
                     {
                         connect.Open();
 
-                        string selectData = "SELECT * FROM Users WHERE username = @username AND password = @pass";
+                        // Modified query to select only necessary columns
+                        string selectData = "SELECT Id, username FROM Users WHERE username = @username AND password = @pass";
                         using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
                             cmd.Parameters.AddWithValue("@username", txtUsername.Text.Trim());
                             cmd.Parameters.AddWithValue("@pass", txtPass.Text.Trim());
 
-                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
+                            SqlDataReader reader = cmd.ExecuteReader();
 
-                            if (table.Rows.Count >= 1)
+                            if (reader.Read()) // Check if the reader has rows, meaning login was successful
                             {
-                                // Set the logged-in username in UserSession
-                                UserSession.CurrentUsername = txtUsername.Text.Trim();
+                                // Set the logged-in user's ID and username in UserSession
+                                UserSession.CurrentUserId = reader.GetInt32(0); // Id column
+                                UserSession.CurrentUsername = reader.GetString(1); // username column
 
                                 MessageBox.Show("Logged In Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -78,6 +78,8 @@ namespace TalkNet
                             {
                                 MessageBox.Show("Incorrect Username/Password", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
+
+                            reader.Close();
                         }
                     }
                     catch (Exception ex)
@@ -91,6 +93,7 @@ namespace TalkNet
                 }
             }
         }
+
         // Add event for "Forgot Password" Link
         private void linkForgotPassword_Click(object sender, LinkLabelLinkClickedEventArgs e)
         {
