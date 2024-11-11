@@ -36,6 +36,9 @@ namespace TalkNet
                 connection.Close();
 
                 MessageBox.Show("Password Successfully Changed!");
+                BackToLogin btl = new BackToLogin();
+                btl.Show();
+                this.Close();
             }
             else
             {
@@ -47,5 +50,6 @@ namespace TalkNet
         {
 
         }
+
     }
 }
