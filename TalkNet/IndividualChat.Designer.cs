@@ -96,9 +96,9 @@ namespace TalkNet
             this.userLabel.Location = new System.Drawing.Point(48, 35);
             this.userLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(94, 25);
+            this.userLabel.Size = new System.Drawing.Size(73, 25);
             this.userLabel.TabIndex = 0;
-            this.userLabel.Text = "USER 1";
+            this.userLabel.Text = "CHAT";
             // 
             // btnSend
             // 
