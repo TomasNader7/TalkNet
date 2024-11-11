@@ -54,7 +54,7 @@ namespace TalkNet
                         connect.Open();
 
                         // Modified query to select only necessary columns
-                        string selectData = "SELECT Id, username FROM Users WHERE username = @username AND password = @pass";
+                        string selectData = "SELECT UserID, username FROM Users WHERE username = @username AND password = @pass";
                         using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
                             cmd.Parameters.AddWithValue("@username", txtUsername.Text.Trim());

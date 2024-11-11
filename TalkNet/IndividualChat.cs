@@ -33,7 +33,7 @@ namespace TalkNet
                 connect.Open();
                 string query = "SELECT M.MessageText, U.username, M.Timestamp " +
                                "FROM Messages M " +
-                               "INNER JOIN Users U ON M.SenderId = U.Id " +
+                               "INNER JOIN Users U ON M.SenderId = U.UserID " +
                                "WHERE M.ChatId = @ChatId " +
                                "ORDER BY M.Timestamp";
 
