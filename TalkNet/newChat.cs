@@ -24,7 +24,7 @@ namespace TalkNet
                 connect.Open();
 
                 // Query to get all users except the current user
-                string query = "SELECT Id, username FROM Users WHERE Id != @currentUserId";
+                string query = "SELECT UserID, username FROM Users WHERE UserID != @currentUserId";
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
