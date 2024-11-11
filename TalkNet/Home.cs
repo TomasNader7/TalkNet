@@ -10,38 +10,39 @@ namespace TalkNet
         // Database connection with the specified connection string
         SqlConnection connect = new SqlConnection(@"Data Source=TOMIROG;Initial Catalog=forget_Password_db;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
 
-        private int _userId;
-        public Home(int userId)
+        public Home()
         {
             InitializeComponent();
-            _userId = userId;
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
             LoadChatsFromDatabase();
         }
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Handle selection of items in the list view
-            // Example: Load chat details or perform actions based on selection
-        }
+
         // Method to load chats from the database
         private void LoadChatsFromDatabase()
         {
             try
             {
                 connect.Open();
-                string query = "SELECT ChatId, ChatName FROM Chats"; // Adjust the query based on your database schema
+                string query = @"
+            SELECT C.ChatId, C.ChatName 
+            FROM Chats C
+            INNER JOIN ChatParticipants CP ON C.ChatId = CP.ChatId
+            WHERE CP.UserId = @UserId";  // Filter by the logged-in user
+
                 SqlCommand cmd = new SqlCommand(query, connect);
+                cmd.Parameters.AddWithValue("@UserId", UserSession.CurrentUserId);  // Use the current logged-in user's ID
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                chatlistBox.Items.Clear();
+                chatsView.Items.Clear();
+
                 while (reader.Read())
                 {
                     ListViewItem item = new ListViewItem(reader["ChatName"].ToString());
                     item.Tag = reader["ChatId"]; // Store ChatId for later reference
-                    chatlistBox.Items.Add(item);
+                    chatsView.Items.Add(item);
                 }
                 reader.Close();
             }
@@ -55,23 +56,24 @@ namespace TalkNet
             }
         }
 
-        private void LoadChatList_SelectedIndexChanged(object sender, EventArgs e)
+             private void chatsView_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (chatlistBox.SelectedItems.Count > 0)
+            if (chatsView.SelectedItems.Count > 0)
             {
-                ListViewItem selectedItem = chatlistBox.SelectedItems[0];
+                ListViewItem selectedItem = chatsView.SelectedItems[0];
                 int chatId = Convert.ToInt32(selectedItem.Tag); // Retrieve ChatId stored in Tag
 
                 // Open the IndividualChat form and pass the selected chatId
-                IndividualChat chatForm = new IndividualChat(chatId, _userId);
+                IndividualChat chatForm = new IndividualChat(chatId);
                 chatForm.Show();
                 this.Hide(); // Hide Home form if necessary
             }
         }
 
+
         private void homeBtn_Click(object sender, EventArgs e)
         {
-            // Optional: Reload chats or handle home button click event
+            LoadChatsFromDatabase(); // // Refresh chats if Home button is clicked
         }
 
         private void SettingBtn_Click(object sender, EventArgs e)
@@ -80,5 +82,6 @@ namespace TalkNet
             S.Show();
             this.Hide();
         }
+
     }
 }

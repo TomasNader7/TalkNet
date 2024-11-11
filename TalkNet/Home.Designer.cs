@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chatlistBox = new System.Windows.Forms.ListView();
+            this.chatsView = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -44,7 +44,7 @@
             // groupBox2
             // 
             this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
-            this.groupBox2.Controls.Add(this.chatlistBox);
+            this.groupBox2.Controls.Add(this.chatsView);
             this.groupBox2.Location = new System.Drawing.Point(303, 40);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
@@ -53,16 +53,19 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             // 
-            // chatlistBox
+            // chatsView
             // 
-            this.chatlistBox.HideSelection = false;
-            this.chatlistBox.Location = new System.Drawing.Point(104, 66);
-            this.chatlistBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chatlistBox.Name = "chatlistBox";
-            this.chatlistBox.Size = new System.Drawing.Size(716, 378);
-            this.chatlistBox.TabIndex = 2;
-            this.chatlistBox.UseCompatibleStateImageBehavior = false;
-            this.chatlistBox.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.chatsView.HideSelection = false;
+            this.chatsView.Location = new System.Drawing.Point(62, 43);
+            this.chatsView.Name = "chatsView";
+            this.chatsView.Columns.Add("Chat Name", 500);
+            this.chatsView.GridLines = true;
+            this.chatsView.FullRowSelect = true;
+            this.chatsView.Size = new System.Drawing.Size(756, 489);
+            this.chatsView.TabIndex = 0;
+            this.chatsView.UseCompatibleStateImageBehavior = false;
+            this.chatsView.View = System.Windows.Forms.View.Details;
+            this.chatsView.SelectedIndexChanged += new System.EventHandler(this.chatsView_SelectedIndexChanged_1);
             // 
             // groupBox1
             // 
@@ -148,16 +151,16 @@
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
-        }
+    }
 
-        #endregion
+    #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
+    private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button SettingBtn;
         private System.Windows.Forms.Button homeBtn;
-        private System.Windows.Forms.ListView chatlistBox;
+        private System.Windows.Forms.ListView chatsView;
     }
 }
