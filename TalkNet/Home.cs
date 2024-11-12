@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Windows.Forms;
 namespace TalkNet
 {
@@ -28,17 +26,18 @@ namespace TalkNet
                 connect.Open();
 
                 string query = @"
-            SELECT C.ChatId, C.ChatName, 
-                   CASE 
-                       WHEN U1.UserID = @UserId THEN U2.username 
-                       ELSE U1.username 
-                   END AS DisplayChatName
-            FROM Chats C
-            INNER JOIN ChatParticipants CP1 ON C.ChatId = CP1.ChatId
-            INNER JOIN ChatParticipants CP2 ON C.ChatId = CP2.ChatId AND CP1.UserId != CP2.UserId
-            INNER JOIN Users U1 ON CP1.UserId = U1.UserID
-            INNER JOIN Users U2 ON CP2.UserId = U2.UserID
-            WHERE (CP1.UserId = @UserId OR CP2.UserId = @UserId)";
+SELECT DISTINCT C.ChatId, C.ChatName, 
+       CASE 
+           WHEN U1.UserID = @UserId THEN U2.username 
+           ELSE U1.username 
+       END AS DisplayChatName
+FROM Chats C
+INNER JOIN ChatParticipants CP1 ON C.ChatId = CP1.ChatId
+INNER JOIN ChatParticipants CP2 ON C.ChatId = CP2.ChatId AND CP1.UserId != CP2.UserId
+INNER JOIN Users U1 ON CP1.UserId = U1.UserID
+INNER JOIN Users U2 ON CP2.UserId = U2.UserID
+WHERE (CP1.UserId = @UserId OR CP2.UserId = @UserId);
+";
 
                 SqlCommand cmd = new SqlCommand(query, connect);
                 cmd.Parameters.AddWithValue("@UserId", UserSession.CurrentUserId);  // Use the current user's ID
@@ -184,11 +183,6 @@ namespace TalkNet
             }
 
             return chatId;
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
