@@ -109,6 +109,3 @@ We welcome contributions to enhance TalkNet. Please follow these steps:
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
-
-With this **README**, you provide a clear, structured overview of TalkNet, including features, installation steps, usage instructions, and future enhancements. This helps users and potential contributors understand the application and get involved in development.
