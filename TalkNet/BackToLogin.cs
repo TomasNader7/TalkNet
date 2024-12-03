@@ -29,5 +29,10 @@ namespace TalkNet
             // Close the current form
             this.Close(); // Or you can use this.Hide(); if you want to keep it in memory
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
