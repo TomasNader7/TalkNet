@@ -41,7 +41,6 @@
             this.label1.Size = new System.Drawing.Size(644, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "If the password is reset successfully, click the button below.";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
