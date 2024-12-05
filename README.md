@@ -1,4 +1,3 @@
-Here’s a detailed **README** file for your TalkNet chat application:
 
 ---
 
